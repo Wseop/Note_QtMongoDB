@@ -56,4 +56,4 @@ build files have been written to: .../mongo-cxx-driver-r3.7.0/build
 ## MongoDB Library 사용
 * Qt Project에서 libbsoncxx, libmongocxx 라이브러리 추가
 * 프로젝트 실행 파일이 존재하는 디렉토리에 libbsoncxx.dll, libmongocxx.dll, lbbson-1.0.dll, libmongoc-1.0.dll 복사하여 사용
-* 추가) libzstd.dll과 zlib1.dll도 함께 추가 필요 (이전에는 없이 실행이 됐는데 어느순간 필요해졌음. 왜?...)
+* 추가) libzstd.dll과 zlib1.dll도 함께 추가 필요, msys2 - mingw64가 설치된 폴더에 있다. (이전에는 없이 실행이 됐는데 어느순간 필요해졌음. 왜?...)
