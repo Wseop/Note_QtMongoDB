@@ -3,7 +3,7 @@ Qt Project에서 MongoDB를 사용하기 위한 환경 설정 방법 및 사용 
 ## 프로젝트 환경
 * Windows 10
 * Qt 6.4.0 MinGW 64-bit
-* mongo-c-driver 1.22.1
+* mongo-c-driver 1.22.2
 * mongo-cxx-driver r3.7.0
 ## Build & Install MongoDB C++ Driver 
 ### 1. MSYS2 설치
@@ -11,6 +11,7 @@ Qt Project에서 MongoDB를 사용하기 위한 환경 설정 방법 및 사용 
 * driver build를 위한 tool download
 ```
 # pacman --noconfirm -Syu (실행 후 창 닫힘)
+# pacman --noconfirm -Syu (한번 더 실행)
 # pacman --noconfirm -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake
 # pacman --noconfirm -S mingw-w64-x86_64-extra-cmake-modules make tar
 # pacman --noconfirm -S mingw64/mingw-w64-x86_64-cyrus-sasl
@@ -21,9 +22,9 @@ Qt Project에서 MongoDB를 사용하기 위한 환경 설정 방법 및 사용 
 * [Mongo C driver releases page](https://github.com/mongodb/mongo-c-driver/releases)
 * Preparing a build
 ```
-# wget https://github.com/mongodb/mongo-c-driver/releases/download/1.22.1/mongo-c-driver-1.22.1.tar.gz
-# tar xzf mongo-c-driver-1.22.1.tar.gz
-# cd mongo-c-driver-1.22.1
+# wget https://github.com/mongodb/mongo-c-driver/releases/download/1.22.2/mongo-c-driver-1.22.2.tar.gz
+# tar xzf mongo-c-driver-1.22.2.tar.gz
+# cd mongo-c-driver-1.22.2
 # mkdir cmake-build
 # cd cmake-build
 # cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF .. -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX=[설치 경로]
