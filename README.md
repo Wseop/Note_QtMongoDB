@@ -43,7 +43,7 @@ build files have been written to: .../mongo-c-driver-1.22.1/cmake-build
 # wget https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.7.0/mongo-cxx-driver-r3.7.0.tar.gz
 # tar xzf mongo-cxx-driver-r3.7.0.tar.gz
 # cd mongo-cxx-driver-r3.7.0/build
-# cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF .. -G "MinGW Makefiles" -DCMAKE_PREFIX_PATH=[mongo-c-driver 설치 경로] -DCMAKE_INSTALL_PREFIX=[설치 경로]
+# cmake .. -G "MinGW Makefiles" -DCMAKE_PREFIX_PATH=[mongo-c-driver 설치 경로] -DCMAKE_INSTALL_PREFIX=[설치 경로]
 ```
 * cmake 설정이 완료되면 아래 메세지 출력
 ```
