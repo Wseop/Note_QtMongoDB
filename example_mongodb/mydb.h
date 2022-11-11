@@ -17,6 +17,7 @@ public:
     static void destroyInst();
 
     void connect();
+    void insertDocument();
 
 private:
     // this should be done only once;
@@ -24,9 +25,9 @@ private:
     // singleton pattern
     static MyDB* m_pDb;
 
-public:
-    mongocxx::database db;
-    mongocxx::collection collection;
+    mongocxx::client m_client;
+    mongocxx::database m_db;
+    mongocxx::collection m_coll;
 };
 
 #endif // MYDB_H
