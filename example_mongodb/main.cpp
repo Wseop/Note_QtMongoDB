@@ -13,5 +13,8 @@ int main(int argc, char *argv[])
     pDb->insertDocument();
     pDb->findDocument();
 
+    pDb->updateDocument();
+    pDb->findDocument();
+
     return a.exec();
 }

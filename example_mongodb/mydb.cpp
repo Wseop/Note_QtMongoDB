@@ -8,6 +8,8 @@
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/json.hpp>
 
+using namespace bsoncxx::builder::stream;
+
 MyDB* MyDB::m_pDb = nullptr;
 
 MyDB::MyDB()
@@ -53,6 +55,7 @@ void MyDB::connect()
 
 void MyDB::insertDocument()
 {
+    qDebug() << "=== insert document ===";
     /*
      * insert below document
      *  {
@@ -65,22 +68,23 @@ void MyDB::insertDocument()
      *      }
      *  }
      */
-    bsoncxx::builder::stream::document document{};
+    document document{};
     document << "Name" << "쿠키"
             << "Level" << 1540
-            << "Attr" << bsoncxx::builder::stream::open_array
+            << "Attr" << open_array
                 << "특화" << "신속"
-            << bsoncxx::builder::stream::close_array
-            << "Engrave" << bsoncxx::builder::stream::open_document
+            << close_array
+            << "Engrave" << open_document
                 << "Name" << "원한"
                 << "Level" << 3
-            << bsoncxx::builder::stream::close_document;
+            << close_document;
     m_coll.insert_one(document.view());
 }
 
 void MyDB::findDocument()
 {
     // find all documents
+    qDebug() << "=== Find all documents ===";
     mongocxx::cursor cursor = m_coll.find({});
     for (auto doc : cursor)
     {
@@ -94,9 +98,13 @@ void MyDB::findDocument()
     }
 
     // find a document with condition
-    auto result = m_coll.find_one(
-                bsoncxx::builder::stream::document{}
-                << "Name" << "쿠키" << bsoncxx::builder::stream::finalize);
+    qDebug() << "=== Find a document ===";
+    auto result = m_coll.find_one(document{} << "Name" << "쿠키" << finalize);
+    if (!result)
+    {
+        qDebug() << "No Data";
+        return;
+    }
     QString jsonDoc = bsoncxx::to_json(*result).c_str();
     QJsonObject jsonObj(QJsonDocument::fromJson(jsonDoc.toUtf8()).object());
 
@@ -104,4 +112,13 @@ void MyDB::findDocument()
     qDebug() << "Level :" << jsonObj.find("Level")->toInt();
     qDebug() << "Attr :" << jsonObj.find("Attr")->toArray().at(0).toString();
     qDebug() << "Engrave :" << jsonObj.find("Engrave")->toObject().find("Name")->toString();
+}
+
+void MyDB::updateDocument()
+{
+    qDebug() << "=== update document ===";
+
+    m_coll.update_one(document{} << "Name" << "쿠키" << finalize,
+                      document{} << "$set" << open_document <<
+                      "Name" << "바닐라" << close_document << finalize);
 }
