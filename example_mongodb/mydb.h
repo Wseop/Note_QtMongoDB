@@ -20,6 +20,7 @@ public:
     void insertDocument();
     void findDocument();
     void updateDocument();
+    void deleteDocument();
 
 private:
     // this should be done only once;

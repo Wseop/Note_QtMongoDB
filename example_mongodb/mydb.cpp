@@ -122,3 +122,10 @@ void MyDB::updateDocument()
                       document{} << "$set" << open_document <<
                       "Name" << "바닐라" << close_document << finalize);
 }
+
+void MyDB::deleteDocument()
+{
+    qDebug() << "=== delete document ===";
+
+    m_coll.delete_one(document{} << "Name" << "바닐라" << finalize);
+}

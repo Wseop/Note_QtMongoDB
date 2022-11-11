@@ -16,5 +16,8 @@ int main(int argc, char *argv[])
     pDb->updateDocument();
     pDb->findDocument();
 
+    pDb->deleteDocument();
+    pDb->findDocument();
+
     return a.exec();
 }
