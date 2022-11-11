@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     pDb->connect();
 
     pDb->insertDocument();
+    pDb->findDocument();
 
     return a.exec();
 }

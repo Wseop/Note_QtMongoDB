@@ -18,6 +18,7 @@ public:
 
     void connect();
     void insertDocument();
+    void findDocument();
 
 private:
     // this should be done only once;
