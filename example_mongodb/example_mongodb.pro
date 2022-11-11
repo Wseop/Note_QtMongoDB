@@ -8,7 +8,8 @@ CONFIG -= app_bundle
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        mydb.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -24,3 +25,6 @@ win32: LIBS += -L$$PWD/../../../mongo-cxx-driver/lib/ -llibmongocxx.dll
 
 INCLUDEPATH += $$PWD/../../../mongo-cxx-driver/include
 DEPENDPATH += $$PWD/../../../mongo-cxx-driver/include
+
+HEADERS += \
+    mydb.h
