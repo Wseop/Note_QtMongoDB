@@ -15,18 +15,12 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += -L$$PWD/../../../mongo-cxx-driver/lib/ -lbsoncxx.dll
+win32: LIBS += -L$$PWD/../../../mongo-cxx-driver/lib/ -llibbsoncxx.dll
 
 INCLUDEPATH += $$PWD/../../../mongo-cxx-driver/include
 DEPENDPATH += $$PWD/../../../mongo-cxx-driver/include
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../../mongo-cxx-driver/lib/bsoncxx.dll.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../../../mongo-cxx-driver/lib/libbsoncxx.dll.a
-
-win32: LIBS += -L$$PWD/../../../mongo-cxx-driver/lib/ -lmongocxx.dll
+win32: LIBS += -L$$PWD/../../../mongo-cxx-driver/lib/ -llibmongocxx.dll
 
 INCLUDEPATH += $$PWD/../../../mongo-cxx-driver/include
 DEPENDPATH += $$PWD/../../../mongo-cxx-driver/include
-
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../../../mongo-cxx-driver/lib/mongocxx.dll.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/../../../mongo-cxx-driver/lib/libmongocxx.dll.a
